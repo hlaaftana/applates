@@ -78,7 +78,7 @@ proc arity*(appl: Applicate): int {.compileTime.} =
   ## gets arity of applicate. check `inferArity` for meaning of
   ## negative values
   runnableExamples:
-    import ../applicates, ./operators
+    import applicates, applicates/operators
     doAssert static(arity((x, y) ==> x + y)) == 2
     doAssert static(arity(a ==> a)) == 1
     doAssert static(arity(==> 3)) == 0

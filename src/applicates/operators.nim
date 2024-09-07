@@ -23,7 +23,7 @@ macro `\`*(call: untyped): untyped =
   ## supports dot calls, if the given expression is not a dot expression
   ## or call or command then it will simply apply it with no arguments
   runnableExamples:
-    import ../applicates
+    import applicates
     const foo = x ==> x + 1
     doAssert \foo(1) == 2
     doAssert \1.foo == 2
@@ -49,7 +49,7 @@ macro `|>`*(value, call): untyped =
   ## 
   ## if call is a dot call, it is not modified, so value becomes the second argument in the call
   runnableExamples:
-    import ../applicates
+    import applicates
 
     const incr = toApplicate(system.succ)
     const multiply = toApplicate(`*`)
@@ -65,7 +65,7 @@ macro `|>`*(value, call): untyped =
 macro `\>`*(value, call): untyped =
   ## same as `|>` except allows multiple arguments for `value` in the form of ``(a, b)``
   runnableExamples:
-    import ../applicates
+    import applicates
 
     const incr = toApplicate(system.succ)
     const multiply = toApplicate(`*`)
@@ -87,7 +87,7 @@ macro `\>`*(value, call): untyped =
 macro chain*(initial, calls): untyped =
   ## statement list chained version of `|>`
   runnableExamples:
-    import ../applicates
+    import applicates
     
     const incr = toApplicate(system.succ)
     const multiply = toApplicate(`*`)

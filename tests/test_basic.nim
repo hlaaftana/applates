@@ -47,7 +47,7 @@ test "applicate macro and apply":
   
   foo.apply(5, FooType)
   check x.field == 5
-  check not compiles(x is FooType) # gensym'd
+  check x is FooType
     
   const incr = applicate do (x: int) -> int: x + 1
   doAssert incr.apply(x.field) == 6
@@ -86,7 +86,7 @@ test "map test":
 
 test "toCallerApplicate":
   const adder = toCallerApplicate(`+`, 2)
-  const toString = toCallerApplicate(`$`)
+  const toString = toCallerApplicate(`$`, 1)
   check \adder(2, 3) |> toString == "5"
 
 test "toApplicate":
