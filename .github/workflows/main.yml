@@ -31,6 +31,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: jiro4989/setup-nim-action@v2
+        with:
+          nim-version: devel
 
       - name: install nimbleutils
         run: nimble install -y https://github.com/metagn/nimbleutils@#HEAD
