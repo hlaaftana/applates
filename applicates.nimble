@@ -21,9 +21,19 @@ task docs, "build docs for all modules":
   else:
     echo "docs task not implemented, need nimbleutils"
 
+import os
+
 task tests, "run tests for multiple backends and defines":
   when declared(runTests):
-    runTests(
+    var tests: seq[string] = @[]
+    for fn in walkDirRec("tests", followFilter = {}):
+      if (let (_, name, ext) = splitFile(fn);
+        name[0] == 't' and ext == ".nim"):
+        if name == "test_iterator_typed" and (NimMajor, NimMinor) == (2, 0):
+          # broken on 2.0
+          continue
+        tests.add(fn)
+    runTests(tests,
       backends = {c, nims}, 
       optionCombos = @[
         "",
